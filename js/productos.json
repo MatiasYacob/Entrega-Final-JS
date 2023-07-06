@@ -1,0 +1,167 @@
+[
+    {
+        "id": "motorlimp",
+        "titulo": "Motorlimp Plus",
+        "descripcion": "Desengrasante concentrado ",
+        "imagen": "./img/5lts/img167.jpg",
+        "categoria": {
+            "cantidad": "5lts",
+            "marca": "Fullcar"
+        },
+        "precio": 6500
+    },
+    {
+        "id": "quitabrea",
+        "titulo": "Quita Brea",
+        "descripcion": "removedor de manchas de brea ",
+        "imagen": "./img/5lts/img190.jpg",
+        "categoria": {
+            "cantidad": "5lts",
+            "marca": "Fullcar"
+        },
+        "precio": 6500
+    },
+    {
+        "id": "quitabicho",
+        "titulo": "Removedor de Insectos",
+        "descripcion": "removedor concentrado de insectos. ",
+        "imagen": "./img/5lts/img186.jpg",
+        "categoria": {
+            "cantidad": "5lts",
+            "marca": "Fullcar"
+        },
+        "precio": 6500
+    },
+    {
+        "id": "limpiatapizado",
+        "titulo": "Limpia Tapizados",
+        "descripcion": "Limpia tapizados concentrado.",
+        "imagen": "./img/5lts/img188.jpg",
+        "categoria": {
+            "cantidad": "5lts",
+            "marca": "Fullcar"
+        },
+        "precio": 6500
+    },
+    {
+        "id": "notouch",
+        "titulo": "No Touch",
+        "descripcion": "Lava coches sin tocar concentrado",
+        "imagen": "./img/5lts/img168.jpg",
+        "categoria": {
+            "cantidad": "5lts",
+            "marca": "Fullcar"
+        },
+        "precio": 6500
+    },
+    {
+        "id": "shampooverde",
+        "titulo": "Shampoo Verde",
+        "descripcion": "Shampo auto 1 en 200 ",
+        "imagen": "./img/5lts/img169.jpg",
+        "categoria": {
+            "cantidad": "5lts",
+            "marca": "Fullcar"
+        },
+        "precio": 6500
+    },
+    {
+        "id": "shampoorojo",
+        "titulo": "Shampoo Rojo",
+        "descripcion": "Shampo auto 1 en 100",
+        "imagen": "./img/5lts/img165.jpg",
+        "categoria": {
+            "cantidad": "5lts",
+            "marca": "Fullcar"
+        },
+        "precio": 6500
+    },
+    {
+        "id": "brillo",
+        "titulo": "Brillo Express",
+        "descripcion": "Abrillantador de Auto",
+        "imagen": "./img/5lts/img205.jpg",
+        "categoria": {
+            "cantidad": "5lts",
+            "marca": "Fullcar"
+        },
+        "precio": 6500
+    },
+    {
+        "id": "brilloPTFE",
+        "titulo": "Brillo Express P.T.F.E",
+        "descripcion": "Abrillantador de Auto teflonado ",
+        "imagen": "./img/5lts/img206.jpg",
+        "categoria": {
+            "cantidad": "5lts",
+            "marca": "Fullcar"
+        },
+        "precio": 6500
+    },
+    {
+        "id": "motorlimp20",
+        "titulo": "Motorlimp Plus",
+        "descripcion": "Desengrasante concentrado ",
+        "imagen": "./img/20lts/img175.jpg",
+        "categoria": {
+            "cantidad": "20lts",
+            "marca": "Fullcar"
+        },
+        "precio": 6500 
+    },
+    {
+        "id": "brillo20",
+        "titulo": "Brillo Express",
+        "descripcion": "Abrillantador de Auto",
+        "imagen": "./img/20lts/img208.jpg",
+        "categoria": {
+            "cantidad": "20lts",
+            "marca": "Fullcar"
+        },
+        "precio": 6500
+    },
+    {
+        "id": "brilloPTFE20",
+        "titulo": "Brillo Express P.T.F.E",
+        "descripcion": "Abrillantador de Auto teflonado ",
+        "imagen": "./img/20lts/img174.jpg",
+        "categoria": {
+            "cantidad": "20lts",
+            "marca": "Fullcar"
+        },
+        "precio": 6500
+    },
+    {
+        "id": "shampooverde20",
+        "titulo": "Shampoo Verde",
+        "descripcion": "Shampo auto 1 en 200 ",
+        "imagen": "./img/20lts/img176.jpg",
+        "categoria": {
+            "cantidad": "20lts",
+            "marca": "Fullcar"
+        },
+        "precio": 6500
+    },
+    {
+        "id": "shampoorojo20",
+        "titulo": "Shampoo Rojo",
+        "descripcion": "Shampo auto 1 en 100",
+        "imagen": "./img/20lts/img172.jpg",
+        "categoria": {
+            "cantidad": "20lts",
+            "marca": "Fullcar"
+        },
+        "precio": 6500
+    },
+    {
+        "id": "notouch20",
+        "titulo": "No Touch",
+        "descripcion": "Lava coches sin tocar concentrado",
+        "imagen": "./img/20lts/img178.jpg",
+        "categoria": {
+            "cantidad": "20lts",
+            "marca": "Fullcar"
+        },
+        "precio": 6500
+    }
+]
