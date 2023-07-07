@@ -1,9 +1,10 @@
-//Notas sobre el codigo: estoy usando Prettier para dar formato al documento
+//Notas sobre el codigo: estoy usando la extencion Prettier para dar formato al documento.
+
+//Aca va a ir todo el codigo que tiene que ver con el index.html 
 
 
-
-//Uso de Fetch para traer el array de productos
-let productos = []; //declaro un array vacio para cargarle los productos con fetch desde el archivo .json
+//Uso de Fetch para traer el array de productos.
+let productos = []; //declaro un array vacio para cargarle los productos con fetch desde el archivo .json.
 fetch("./js/productos.json")
   .then((response) => response.json())
   .then((data) => {
@@ -12,7 +13,7 @@ fetch("./js/productos.json")
   });
 
 
-  // Aca declaro las variables que voy a usar para el DOM 
+  // Aca declaro las variables que voy a usar para el DOM.
 const contenedorProductos = document.querySelector("#contenedor-productos");
 const botonesCategorias = document.querySelectorAll(".boton-categoria");
 const tituloPrincipal = document.querySelector("#titulo-principal");
@@ -20,8 +21,9 @@ let botonesAgregar = document.querySelectorAll(".producto-agregar");
 const numerito = document.querySelector("#numerito");
 
 
-//Esta funcion se encarga de crear los DIVs para mostrar los productos en pantalla
-function cargarProductos(productosElegidos) {     //
+//Esta funcion se encarga de crear los DIVs para mostrar los productos en pantalla.
+
+function cargarProductos(productosElegidos) {     
   contenedorProductos.innerHTML = "";  
   productosElegidos.forEach((producto) => {
     const div = document.createElement("div");
@@ -39,12 +41,14 @@ function cargarProductos(productosElegidos) {     //
   });
   actualizarBotones(); // Aca llamo a la funcion para actualizar los botones de Agregar que se generan dinamicamente
 }
-
+//Esta funcion los botones categorias que van a ir filtrando las pestañas entre distincas categorias de los productos
+//las cuales son TODOS los productos, productos de 5lts y productos de 20lts 
+//(nos manejamos asi en mi trabajo por eso use estas categorias).
 botonesCategorias.forEach((boton) => {
   boton.addEventListener("click", (e) => {
     botonesCategorias.forEach((boton) => boton.classList.remove("active"));
     e.currentTarget.classList.add("active");
-    if (e.currentTarget.id != "todos") {
+    if (e.currentTarget.id != "todos") {   // Hay 3 pestañas con ID si NO tiene la ID "todos" se filtran los productos segun su cantidad.
       const productosBoton = productos.filter(
         (producto) => producto.categoria.cantidad === e.currentTarget.id
       );
@@ -54,13 +58,16 @@ botonesCategorias.forEach((boton) => {
       console.log(productosCategoria);
       tituloPrincipal.innerText = `Productos de : ${productosCategoria.categoria.cantidad}`;
       cargarProductos(productosBoton);
-    } else {
+    } else { // sino se cargan todos los productos 
       cargarProductos(productos);
       tituloPrincipal.innerText = "Todos Los Productos";
     }
   });
 });
 
+
+//Esta funcion actualiza los botones de agregar al carrito ya que al ser generados de forma dinamica
+//hay que volver a asignarles el evento de click  esta funcion se va a estar llamando cada vez que se rendericen los productos.
 function actualizarBotones() {
   botonesAgregar = document.querySelectorAll(".producto-agregar");
 
@@ -68,13 +75,16 @@ function actualizarBotones() {
     boton.addEventListener("click", agregarAlCarrito);
   });
 }
-
+//Aca creo una variable con los productos cargados en el LS 
+//esto es para que el numerito del carrito se mantenga aunque estemos cambiando de pagina
 const productosEnCarritoLS = JSON.parse(
   localStorage.getItem("productos-en-carrito")
 );
-
+//esta variable es para el numero del carrito.
 let productosEnCarrito;
 
+//este condicional busca si hay productos cargados en el carrito para asigarle ese valora la variable que voy a usar para 
+//contar cuantos productos hay en el carrito, en caso contrario le asigna un array vacio.
 if (productosEnCarritoLS) {
   productosEnCarrito = productosEnCarritoLS;
   actualizarNumerito();
@@ -82,6 +92,9 @@ if (productosEnCarritoLS) {
   productosEnCarrito = [];
 }
 
+//Uso de LocalStorage y Librerias (Toastify)
+
+//Esta funcion va a agregar productos al carrito y muestra un "toast" como alerta visual para el usuario.
 function agregarAlCarrito(e) {
   Toastify({
     text: "Se Agrego Un Producto.",
@@ -111,13 +124,15 @@ function agregarAlCarrito(e) {
     productoAgregado.cantidadEnCarrito = 1;
     productosEnCarrito.push(productoAgregado);
   }
-  actualizarNumerito();
+
+  actualizarNumerito();  //llamo a la funcion del numero del carrito para que se actualize al mismo tiempo.
   localStorage.setItem(
     "productos-en-carrito",
     JSON.stringify(productosEnCarrito)
   );
 }
 
+//Esta funcion se encarga de cambiar el numerito del carrito 
 function actualizarNumerito() {
   let nuevoNumerito = productosEnCarrito.reduce(
     (acc, producto) => acc + producto.cantidadEnCarrito,
