@@ -30,6 +30,7 @@ function cargarProductos(productosElegidos) {
     div.classList.add("producto");
     div.innerHTML = ` <img class="producto-imagen" src="${producto.imagen}" alt="${producto.titulo}">
     <div class="producto-detalles">
+    
         <h3 class="producto-titulo">${producto.titulo}</h3>
         <p class="producto-descripcion" >${producto.descripcion} </p>
         <p class="producto-precio">Marca: ${producto.categoria.marca}</p>

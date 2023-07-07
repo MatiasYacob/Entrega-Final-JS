@@ -148,6 +148,7 @@ function actualizarTotal() {
     console.log(totalCalculado);
 }
 
+//Esta funcion simula una compra borrando todo lo guardado en LS y mostrando un mensaje de "gracias".
 function carritoComprado() {
     productosEnCarrito.length = 0;
     localStorage.setItem(
@@ -159,14 +160,13 @@ function carritoComprado() {
     contenedorCarritoProductos.classList.add("disabled");
     contenedorCarritoAcciones.classList.add("disabled");
     contenedorCarritoComprado.classList.remove("disabled");
-
+    
 }
-
-
-//Esta funcion simula una compra borrando todo lo guardado en LS y mostrando un mensaje de "gracias".
+//Uso de Promesas Async y await
+//Esta Funcion se ejecuta al hacer clic en comprar.
 const comprar = async () => {
-    try {
-        const result = await Swal.fire({
+    try {    // va a intentar (esto va a ocurrir siempre)
+        const resultado = await Swal.fire({
             title: "Seguro quiere confirmar esta compra?",
             showDenyButton: true,
             showCancelButton: false,
@@ -174,41 +174,29 @@ const comprar = async () => {
             denyButtonText: `Cancelar`,
         });
 
-        if (result.isConfirmed) {
+        if (resultado.isConfirmed) {
             
-            const loadingMessage = Swal.fire({
+            Swal.fire({
                 title: "Espere un momento...",
                 showConfirmButton: false,
                 allowOutsideClick: false,
-                onBeforeOpen: () => {
+                willOpen: () => {
                     Swal.showLoading();
                 }
             });
-
+            //aca le pido que "espere" a la que se cumpla la promesa en 3000ms
             await new Promise((resolve) => setTimeout(resolve, 3000));
 
-            Swal.close();
+            Swal.close(); //se cierra el cartelito de espera
             Swal.fire("Operacion Exitosa! ", "", "success");
-            carritoComprado()
-            cargarProductosCarrito();
-        } else if (result.isDenied) {
+            carritoComprado();//se muestra el mensaje de gracias.
+        } else if (resultado.isDenied) { //si respondemos cancelar se cancela la operacion.
             Swal.fire("Operacion Cancelada", "", "error");
         }
-    } catch (error) {
+    } catch (error) { //esto nunca va a ocurrir porque solo estoy simulando con un timer.
         console.log("Error:", error);
     }
 };
-
-
-
-
-
-
-
-
-
-
-
 //Aca le asigno el evento click al boton de vaciar carrito para que ejecute la funcion comprarCarrito().
 botonComprar.addEventListener("click", comprar);
 

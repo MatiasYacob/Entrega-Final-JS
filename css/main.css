@@ -1,4 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+@font-face{
+    font-family: 'titulo';
+    src: url("./assets/fonts/gantelline\ 2.otf"); }
+
+
+
 
 :root {
     --clr-main: yellow;
@@ -20,6 +26,10 @@ h1, h2, h3, h4, h5, h6, p, a, input, textarea, ul {
     padding: 0;
 }
 
+.logofullcar{
+    height: 200px;
+    
+}
 ul {
     list-style-type: none;
 }
@@ -47,8 +57,11 @@ aside {
 }
 
 .logo {
-    font-weight: 400;
-    font-size: 1.3rem;
+    font-family: titulo;
+    font-weight: 100;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    
 }
 
 .menu {
@@ -307,6 +320,12 @@ main {
 @media screen and (max-width: 850px) {
     .contenedor-productos {
         grid-template-columns: 1fr 1fr 1fr;
+    }
+    .logo {
+        font-family: titulo;
+        font-weight: 0;
+        font-size: 1.5rem;
+        white-space:normal;
     }
 }
 
