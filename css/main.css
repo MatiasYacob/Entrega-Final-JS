@@ -327,6 +327,17 @@ main {
         font-size: 1.5rem;
         white-space:normal;
     }
+    .logofullcar{
+        height: 150px;
+        width: 150px;
+        
+    }
+    #logoAside{
+        height: 200px;
+        width: 200px;
+        margin-left: 25%;
+
+    }
 }
 
 @media screen and (max-width: 675px) {
