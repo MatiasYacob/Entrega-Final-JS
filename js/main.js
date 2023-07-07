@@ -1,20 +1,28 @@
-let productos = [];
-fetch("./js/productos.json")
-  .then(response => response.json())
-  .then(data => {
-  productos = data;
-  cargarProductos(productos);
-})
+//Notas sobre el codigo: estoy usando Prettier para dar formato al documento
 
+
+
+//Uso de Fetch para traer el array de productos
+let productos = []; //declaro un array vacio para cargarle los productos con fetch desde el archivo .json
+fetch("./js/productos.json")
+  .then((response) => response.json())
+  .then((data) => {
+    productos = data;
+    cargarProductos(productos);
+  });
+
+
+  // Aca declaro las variables que voy a usar para el DOM 
 const contenedorProductos = document.querySelector("#contenedor-productos");
 const botonesCategorias = document.querySelectorAll(".boton-categoria");
 const tituloPrincipal = document.querySelector("#titulo-principal");
 let botonesAgregar = document.querySelectorAll(".producto-agregar");
 const numerito = document.querySelector("#numerito");
 
-function cargarProductos(productosElegidos) {
-    
-  contenedorProductos.innerHTML = "";
+
+//Esta funcion se encarga de crear los DIVs para mostrar los productos en pantalla
+function cargarProductos(productosElegidos) {     //
+  contenedorProductos.innerHTML = "";  
   productosElegidos.forEach((producto) => {
     const div = document.createElement("div");
     div.classList.add("producto");
@@ -29,9 +37,8 @@ function cargarProductos(productosElegidos) {
     `;
     contenedorProductos.append(div);
   });
-  actualizarBotones();
+  actualizarBotones(); // Aca llamo a la funcion para actualizar los botones de Agregar que se generan dinamicamente
 }
-
 
 botonesCategorias.forEach((boton) => {
   boton.addEventListener("click", (e) => {
@@ -41,9 +48,11 @@ botonesCategorias.forEach((boton) => {
       const productosBoton = productos.filter(
         (producto) => producto.categoria.cantidad === e.currentTarget.id
       );
-      const productosCategoria = productos.find(producto => producto.categoria.cantidad === e.currentTarget.id);
-      console.log(productosCategoria)
-      tituloPrincipal.innerText = `Productos de : ${productosCategoria.categoria.cantidad}`
+      const productosCategoria = productos.find(
+        (producto) => producto.categoria.cantidad === e.currentTarget.id
+      );
+      console.log(productosCategoria);
+      tituloPrincipal.innerText = `Productos de : ${productosCategoria.categoria.cantidad}`;
       cargarProductos(productosBoton);
     } else {
       cargarProductos(productos);
@@ -52,30 +61,28 @@ botonesCategorias.forEach((boton) => {
   });
 });
 
-function actualizarBotones(){
-    botonesAgregar = document.querySelectorAll(".producto-agregar")
+function actualizarBotones() {
+  botonesAgregar = document.querySelectorAll(".producto-agregar");
 
-    botonesAgregar.forEach(boton => {
-      boton.addEventListener("click", agregarAlCarrito);
-      
-    });
-      
-    
+  botonesAgregar.forEach((boton) => {
+    boton.addEventListener("click", agregarAlCarrito);
+  });
 }
 
-const productosEnCarritoLS = JSON.parse(localStorage.getItem("productos-en-carrito"));
+const productosEnCarritoLS = JSON.parse(
+  localStorage.getItem("productos-en-carrito")
+);
 
 let productosEnCarrito;
-if(productosEnCarritoLS){
-  productosEnCarrito = productosEnCarritoLS
-  actualizarNumerito()
-}else{
+
+if (productosEnCarritoLS) {
+  productosEnCarrito = productosEnCarritoLS;
+  actualizarNumerito();
+} else {
   productosEnCarrito = [];
 }
 
-
-function agregarAlCarrito(e){
-
+function agregarAlCarrito(e) {
   Toastify({
     text: "Se Agrego Un Producto.",
     duration: 3000,
@@ -85,27 +92,36 @@ function agregarAlCarrito(e){
     position: "right", // `left`, `center` or `right`
     stopOnFocus: true, // Prevents dismissing of toast on hover
     style: {
-      dysplay:"flex",
+      dysplay: "flex",
       background: "linear-gradient(to right, #000000, #000000)",
-      borderRadius: "1rem"
-    }
+      borderRadius: "1rem",
+    },
   }).showToast();
 
   const idBoton = e.currentTarget.id;
-  const productoAgregado = productos.find(producto => producto.id === idBoton);
-  if(productosEnCarrito.some(producto => producto.id === idBoton)){
-    const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
+  const productoAgregado = productos.find(
+    (producto) => producto.id === idBoton
+  );
+  if (productosEnCarrito.some((producto) => producto.id === idBoton)) {
+    const index = productosEnCarrito.findIndex(
+      (producto) => producto.id === idBoton
+    );
     productosEnCarrito[index].cantidadEnCarrito++;
-  }else{
+  } else {
     productoAgregado.cantidadEnCarrito = 1;
     productosEnCarrito.push(productoAgregado);
   }
   actualizarNumerito();
-  localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
-};
+  localStorage.setItem(
+    "productos-en-carrito",
+    JSON.stringify(productosEnCarrito)
+  );
+}
 
-
-function actualizarNumerito(){
-  let nuevoNumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidadEnCarrito, 0);
-  numerito.innerText = nuevoNumerito
+function actualizarNumerito() {
+  let nuevoNumerito = productosEnCarrito.reduce(
+    (acc, producto) => acc + producto.cantidadEnCarrito,
+    0
+  );
+  numerito.innerText = nuevoNumerito;
 }
