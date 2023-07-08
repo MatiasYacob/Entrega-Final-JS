@@ -4,13 +4,31 @@
 
 
 //Uso de Fetch para traer el array de productos.
-let productos = []; //declaro un array vacio para cargarle los productos con fetch desde el archivo .json.
-fetch("./js/productos.json")
-  .then((response) => response.json())
-  .then((data) => {
-    productos = data;
-    cargarProductos(productos);
+const obtenerProductos = () => {
+  return new Promise((resolve, reject) => {
+    fetch("./js/productos.json")
+      .then((respuesta) => {
+        if (!respuesta.ok) {
+          throw new Error("Error en la solicitud: " + respuesta.status);
+        }
+        return respuesta.json();
+      })
+      .then((data) => {
+        resolve(data);
+      })
+      .catch((error) => {
+        reject(error);
+      });
   });
+};
+
+obtenerProductos()
+  .then((productos) => {
+    cargarProductos(productos);
+  })
+  .catch((error) => {
+    console.log("Error al obtener los productos:", error);
+  })
 
 
   // Aca declaro las variables que voy a usar para el DOM.
