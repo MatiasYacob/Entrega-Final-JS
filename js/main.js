@@ -2,8 +2,9 @@
 
 //Aca va a ir todo el codigo que tiene que ver con el index.html 
 
+let productos; // Declarar la variable productos fuera de la función
 
-//Uso de Fetch para traer el array de productos.
+// Uso de Fetch para traer el array de productos.
 const obtenerProductos = () => {
   return new Promise((resolve, reject) => {
     fetch("./js/productos.json")
@@ -14,6 +15,7 @@ const obtenerProductos = () => {
         return respuesta.json();
       })
       .then((data) => {
+        productos = data; // Asignar el valor a la variable productos
         resolve(data);
       })
       .catch((error) => {
@@ -21,6 +23,9 @@ const obtenerProductos = () => {
       });
   });
 };
+
+// Resto del código...
+
 
 obtenerProductos()
   .then((productos) => {
