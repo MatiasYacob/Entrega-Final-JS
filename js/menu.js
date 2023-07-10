@@ -13,7 +13,7 @@ closeMenu.addEventListener("click", () => {
     aside.classList.remove("aside-visible");
 });
 
-
+function asignarEvento(){
 if (typeof botonesCategorias !== "undefined") {
     botonesCategorias.forEach((boton) => {
       boton.addEventListener("click", () => {
@@ -21,6 +21,7 @@ if (typeof botonesCategorias !== "undefined") {
       });
     });
   }
-
+}
+asignarEvento();
 
 
