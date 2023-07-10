@@ -6,19 +6,21 @@ const closeMenu = document.querySelector("#close-menu");
 const aside = document.querySelector("aside");
 
 openMenu.addEventListener("click", () => {
-  aside.classList.add("aside-visible");
+    aside.classList.add("aside-visible");
 });
 
 closeMenu.addEventListener("click", () => {
-  aside.classList.remove("aside-visible");
+    aside.classList.remove("aside-visible");
 });
 
-// Verificar si es version de telefono 
-if (typeof botonesCategorias !== "undefined" && window.innerWidth < 768) {
+
+if (typeof botonesCategorias !== "undefined") {
     botonesCategorias.forEach((boton) => {
       boton.addEventListener("click", () => {
         aside.classList.remove("aside-visible");
       });
     });
   }
-  
+
+
+
