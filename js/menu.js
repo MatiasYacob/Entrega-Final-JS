@@ -13,11 +13,12 @@ closeMenu.addEventListener("click", () => {
   aside.classList.remove("aside-visible");
 });
 
-// Verificar si es versión de teléfono y luego ejecutar botonesCategorias()
-if (window.innerWidth < 768) {
-  botonesCategorias.forEach((boton) => {
-    boton.addEventListener("click", () => {
-      aside.classList.remove("aside-visible");
+// Verificar si es version de telefono 
+if (typeof botonesCategorias !== "undefined" && window.innerWidth < 768) {
+    botonesCategorias.forEach((boton) => {
+      boton.addEventListener("click", () => {
+        aside.classList.remove("aside-visible");
+      });
     });
-  });
-}
+  }
+  
